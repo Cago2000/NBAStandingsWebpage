@@ -23,6 +23,7 @@ STANDINGS_JSON_URL = f"http://{PC_IP}:{PC_PORT}/standings.json"
 WEB_PORT = 80
 
 
+
 # === Wi-Fi connection ===
 def connect_wifi():
     wlan = network.WLAN(network.STA_IF)
