@@ -1,3 +1,5 @@
 *.bin
 /.idea
 config.json
+/fetcher
+/webpage
