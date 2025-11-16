@@ -10,7 +10,6 @@
     color: #eee;
     padding: 20px;
   }
-
   h1 {
     text-align: center;
     color: #fff;
@@ -20,7 +19,6 @@
     border-radius: 10px;
     margin-bottom: 30px;
   }
-
   .header-row {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -31,45 +29,37 @@
     font-size: 1.5em;
     color: gold;
   }
-
   .grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 10px;
   }
-
   .standings {
     background-color: #222;
     padding: 10px;
     border-radius: 10px;
     box-shadow: 0 0 15px rgba(0,0,0,0.5);
   }
-
   .standings h2 {
     text-align: center;
     color: #1abc9c;
     margin-bottom: 10px;
   }
-
   table {
     width: 100%;
     border-collapse: collapse;
   }
-
   th, td {
     padding: 5px;
     text-align: center;
     border-bottom: 1px solid #333;
   }
-
   th {
     background-color: #333;
     color: #fff;
   }
-
   td.win { color: #27ae60; font-weight: bold; }
   td.loss { color: #e74c3c; font-weight: bold; }
-
   tr.match { background-color: #27ae60; color: #fff; font-weight: bold; }
   tr.almost-match { background-color: #f1c40f; color: #000; font-weight: bold; }
   tr:hover { background-color: #444; }
@@ -87,7 +77,6 @@
 </div>
 
 <div class="grid">
-
   <!-- WEST ROW -->
   <div class="standings">
     <h2>West</h2>
@@ -96,31 +85,18 @@
       <tbody></tbody>
     </table>
   </div>
-
   <div class="standings">
     <h2>West</h2>
-    <table id="can-west-table">
-      <thead><tr><th>Seed</th><th>Team</th></tr></thead>
-      <tbody></tbody>
-    </table>
+    <table id="can-west-table"><thead><tr><th>Seed</th><th>Team</th></tr></thead><tbody></tbody></table>
   </div>
-
   <div class="standings">
     <h2>West</h2>
-    <table id="marlon-west-table">
-      <thead><tr><th>Seed</th><th>Team</th></tr></thead>
-      <tbody></tbody>
-    </table>
+    <table id="marlon-west-table"><thead><tr><th>Seed</th><th>Team</th></tr></thead><tbody></tbody></table>
   </div>
-
   <div class="standings">
     <h2>West</h2>
-    <table id="ole-west-table">
-      <thead><tr><th>Seed</th><th>Team</th></tr></thead>
-      <tbody></tbody>
-    </table>
+    <table id="ole-west-table"><thead><tr><th>Seed</th><th>Team</th></tr></thead><tbody></tbody></table>
   </div>
-
   <!-- EAST ROW -->
   <div class="standings">
     <h2>East</h2>
@@ -129,31 +105,18 @@
       <tbody></tbody>
     </table>
   </div>
-
   <div class="standings">
     <h2>East</h2>
-    <table id="can-east-table">
-      <thead><tr><th>Seed</th><th>Team</th></tr></thead>
-      <tbody></tbody>
-    </table>
+    <table id="can-east-table"><thead><tr><th>Seed</th><th>Team</th></tr></thead><tbody></tbody></table>
   </div>
-
   <div class="standings">
     <h2>East</h2>
-    <table id="marlon-east-table">
-      <thead><tr><th>Seed</th><th>Team</th></tr></thead>
-      <tbody></tbody>
-    </table>
+    <table id="marlon-east-table"><thead><tr><th>Seed</th><th>Team</th></tr></thead><tbody></tbody></table>
   </div>
-
   <div class="standings">
     <h2>East</h2>
-    <table id="ole-east-table">
-      <thead><tr><th>Seed</th><th>Team</th></tr></thead>
-      <tbody></tbody>
-    </table>
+    <table id="ole-east-table"><thead><tr><th>Seed</th><th>Team</th></tr></thead><tbody></tbody></table>
   </div>
-
 </div>
 
 <script>
@@ -161,9 +124,18 @@ async function loadData() {
   try {
     const res = await fetch('/standings.json');
     const data = await res.json();
-
     const users = ["Can", "Marlon", "Ole"];
     const conferences = ["East", "West"];
+
+    // --- Sort truth by NBA rules: win% descending, then GB ascending ---
+    function sortTruthTeams(teams) {
+      return teams.slice().sort((a, b) => {
+        const winPctA = a.wins / (a.wins + a.losses);
+        const winPctB = b.wins / (b.wins + b.losses);
+        if (winPctB !== winPctA) return winPctB - winPctA;
+        return a.games_behind - b.games_behind; // smaller GB first
+      });
+    }
 
     function fillTable(tableId, teams, includeWL=false, truthTeams=[]) {
       const tbody = document.getElementById(tableId).querySelector('tbody');
@@ -175,11 +147,8 @@ async function loadData() {
         } else {
           tr.innerHTML = `<td>${team.seed}</td><td>${team.team}</td>`;
           const truthPos = truthTeams.findIndex(t => t.team === team.team);
-          if (truthPos === i) {
-            tr.classList.add('match');
-          } else if (Math.abs(truthPos - i) === 1) {
-            tr.classList.add('almost-match');
-          }
+          if (truthPos === i) tr.classList.add('match');
+          else if (Math.abs(truthPos - i) === 1) tr.classList.add('almost-match');
         }
         tbody.appendChild(tr);
       });
@@ -195,24 +164,25 @@ async function loadData() {
       return points;
     }
 
-    // Fill truth tables
-    conferences.forEach(conf => 
-      fillTable(`truth-${conf.toLowerCase()}-table`, data[conf], true)
-    );
+    // --- Sort truth per conference ---
+    const sortedTruth = {};
+    conferences.forEach(conf => {
+      sortedTruth[conf] = sortTruthTeams(data[conf]);
+      fillTable(`truth-${conf.toLowerCase()}-table`, sortedTruth[conf], true);
+    });
 
-    // Fill predictions and compute points
+    // --- Fill predictions ---
     users.forEach(u => {
       let totalPoints = 0;
       let maxPoints = 0;
       conferences.forEach(conf => {
-        const predTeams = data[u][conf];
-        const truthTeams = data[conf];
+        const predTeams = data[u][conf] || [];
+        const truthTeams = sortedTruth[conf];
         fillTable(`${u.toLowerCase()}-${conf.toLowerCase()}-table`, predTeams, false, truthTeams);
         totalPoints += calculatePoints(predTeams, truthTeams);
         maxPoints += predTeams.length * 2;
       });
-      document.getElementById(`${u.toLowerCase()}-header`).textContent =
-        `${u} (${totalPoints}/${maxPoints})`;
+      document.getElementById(`${u.toLowerCase()}-header`).textContent = `${u} (${totalPoints}/${maxPoints})`;
     });
 
   } catch (err) {
@@ -220,10 +190,9 @@ async function loadData() {
   }
 }
 
+// Initial load
 loadData();
 </script>
 
 </body>
 </html>
-
-
