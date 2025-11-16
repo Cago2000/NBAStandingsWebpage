@@ -1,0 +1,112 @@
+{
+  "Can": {
+    "West": [
+      {"team": "Denver Nuggets", "seed": 1},
+      {"team": "Oklahoma City Thunder", "seed": 2},
+      {"team": "Houston Rockets", "seed": 3},
+      {"team": "Los Angeles Lakers", "seed": 4},
+      {"team": "Minnesota Timberwolves", "seed": 5},
+      {"team": "Dallas Mavericks", "seed": 6},
+      {"team": "San Antonio Spurs", "seed": 7},
+      {"team": "Golden State Warriors", "seed": 8},
+      {"team": "LA Clippers", "seed": 9},
+      {"team": "Sacramento Kings", "seed": 10},
+      {"team": "New Orleans Pelicans", "seed": 11},
+      {"team": "Memphis Grizzlies", "seed": 12},
+      {"team": "Phoenix Suns", "seed": 13},
+      {"team": "Portland Trailblazers", "seed": 14},
+      {"team": "Utah Jazz", "seed": 15}
+    ],
+    "East": [
+      {"team": "Cleveland Cavaliers", "seed": 1},
+      {"team": "New York Knicks", "seed": 2},
+      {"team": "Milwaukee Bucks", "seed": 3},
+      {"team": "Orlando Magic", "seed": 4},
+      {"team": "Atlanta Hawks", "seed": 5},
+      {"team": "Detroit Pistons", "seed": 6},
+      {"team": "Boston Celtics", "seed": 7},
+      {"team": "Philadelphia 76ers", "seed": 8},
+      {"team": "Indiana Pacers", "seed": 9},
+      {"team": "Toronto Raptors", "seed": 10},
+      {"team": "Miami Heat", "seed": 11},
+      {"team": "Chicago Bulls", "seed": 12},
+      {"team": "Charlotte Hornets", "seed": 13},
+      {"team": "Brooklyn Nets", "seed": 14},
+      {"team": "Washington Wizards", "seed": 15}
+    ]
+  },
+  "Marlon": {
+    "West": [
+      {"team": "Oklahoma City Thunder", "seed": 1},
+      {"team": "Denver Nuggets", "seed": 2},
+      {"team": "Houston Rockets", "seed": 3},
+      {"team": "Minnesota Timberwolves", "seed": 4},
+      {"team": "Los Angeles Lakers", "seed": 5},
+      {"team": "LA Clippers", "seed": 6},
+      {"team": "Golden State Warriors", "seed": 7},
+      {"team": "San Antonio Spurs", "seed": 8},
+      {"team": "Dallas Mavericks", "seed": 9},
+      {"team": "New Orleans Pelicans", "seed": 10},
+      {"team": "Phoenix Suns", "seed": 11},
+      {"team": "Sacramento Kings", "seed": 12},
+      {"team": "Memphis Grizzlies", "seed": 13},
+      {"team": "Portland Trailblazers", "seed": 14},
+      {"team": "Utah Jazz", "seed": 15}
+    ],
+    "East": [
+      {"team": "Cleveland Cavaliers", "seed": 1},
+      {"team": "New York Knicks", "seed": 2},
+      {"team": "Atlanta Hawks", "seed": 3},
+      {"team": "Orlando Magic", "seed": 4},
+      {"team": "Detroit Pistons", "seed": 5},
+      {"team": "Milwaukee Bucks", "seed": 6},
+      {"team": "Charlotte Hornets", "seed": 7},
+      {"team": "Indiana Pacers", "seed": 8},
+      {"team": "Chicago Bulls", "seed": 9},
+      {"team": "Toronto Raptors", "seed": 10},
+      {"team": "Philadelphia 76ers", "seed": 11},
+      {"team": "Boston Celtics", "seed": 12},
+      {"team": "Chicago Bulls", "seed": 13},
+      {"team": "Washington Wizards", "seed": 14},
+      {"team": "Brooklyn Nets", "seed": 15}
+    ]
+  },
+  "Ole": {
+    "West": [
+      {"team": "Oklahoma City Thunder", "seed": 1},
+      {"team": "Denver Nuggets", "seed": 2},
+      {"team": "Minnesota Timberwolves", "seed": 3},
+      {"team": "Houston Rockets", "seed": 4},
+      {"team": "Los Angeles Lakers", "seed": 5},
+      {"team": "San Antonio Spurs", "seed": 6},
+      {"team": "Golden State Warriors", "seed": 7},
+      {"team": "Los Angeles Clippers", "seed": 8},
+      {"team": "Dallas Mavericks", "seed": 9},
+      {"team": "Memphis Grizzlies", "seed": 10},
+      {"team": "Sacramento Kings", "seed": 11},
+      {"team": "New Orleans Pelicans", "seed": 12},
+      {"team": "Phoenix Suns", "seed": 13},
+      {"team": "Portland Trailblazers", "seed": 14},
+      {"team": "Utah Jazz", "seed": 15}
+    ],
+    "East": [
+      {"team": "New York Knicks", "seed": 1},
+      {"team": "Cleveland Cavaliers", "seed": 2},
+      {"team": "Orlando Magic", "seed": 3},
+      {"team": "Milwaukee Bucks", "seed": 4},
+      {"team": "Atlanta Hawks", "seed": 5},
+      {"team": "Boston Celtics", "seed": 6},
+      {"team": "Detroit Pistons", "seed": 7},
+      {"team": "Toronto Raptors", "seed": 8},
+      {"team": "Indiana Pacers", "seed": 9},
+      {"team": "Miami Heat", "seed": 10},
+      {"team": "Philadelphia 76ers", "seed": 11},
+      {"team": "Charlotte Hornets", "seed": 12},
+      {"team": "Chicago Bulls", "seed": 13},
+      {"team": "Brooklyn Nets", "seed": 14},
+      {"team": "Washington Wizards", "seed": 15}
+    ]
+  }
+}
+
+
