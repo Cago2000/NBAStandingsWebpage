@@ -1,3 +1,3 @@
-from webpage.webpage_init import main
+from main import main
 
-#main()
+main()

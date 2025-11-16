@@ -22,6 +22,7 @@ PC_PORT = config.get("pc_port", 8000)
 STANDINGS_JSON_URL = f"http://{PC_IP}:{PC_PORT}/standings.json"
 WEB_PORT = 80
 
+
 # === Wi-Fi connection ===
 def connect_wifi():
     wlan = network.WLAN(network.STA_IF)
@@ -172,7 +173,10 @@ def start_web_server(ip):
         finally:
             cl.close()
 
+def main():
+    ip = connect_wifi()
+    start_web_server(ip)    
+
 # === Main ===
 if __name__ == "__main__":
-    ip = connect_wifi()
-    start_web_server(ip)
+    main()
